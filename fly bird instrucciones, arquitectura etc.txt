@@ -1,0 +1,76 @@
+Deivis Miranda - T0077310
+
+
+Instrucciones del Juego:
+
+- Objetivo: 
+Controlar un pájaro para atravesar tuberías sin chocar con ellas y alcanzar la máxima puntuación posible.  
+
+- Controles:  
+  - Presionar una tecla específica (como la barra espaciadora) para que el pájaro suba.  
+  - Si no se presiona nada, el pájaro desciende debido a la gravedad.
+  
+- Condiciones de Pérdida: 
+  - Chocar contra las tuberías.  
+  - Salir de los límites del área de juego.
+  
+-Sistema de Puntaje:  
+  - Ganas puntos cada vez que el pájaro pasa exitosamente entre las tuberías.  
+  - El puntaje es visible en tiempo real y se reinicia al perder.
+
+
+Arquitectura del Juego:
+
+1. Elementos Principales: 
+- Pájaro: Representado por caracteres ASCII, con movimiento vertical controlado por el jugador.  
+- Tuberías: Obstáculos móviles que se desplazan horizontalmente y generan huecos aleatorios.  
+- Pantalla: Delimitada por bordes que enmarcan el área de juego activa.  
+- Puntaje: Indicador numérico del progreso del jugador.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+2. Atributos y Variables Clave: 
+
+- Posiciones: Variables para la ubicación del pájaro (`posicionPajaro`) y las tuberías (`posicionTuberia` y `posicionGap`).  
+
+- Gravedad: Un decremento constante de la posición vertical del pájaro cuando no se pulsa una tecla. 
+ 
+- Puntaje: Variable que registra y actualiza los puntos obtenidos al pasar cada tubería.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+3. Funciones Principales:
+
+- `gotoxy(x, y):` Mueve el cursor a una posición específica en la consola para dibujar elementos dinámicos como el pájaro, las tuberías y el puntaje.  
+
+- `dibujarBordes():` Dibuja los límites del juego con caracteres ASCII para definir el área de juego. 
+ 
+- `moverPajaro():` Controla el movimiento vertical del pájaro, aplicando la gravedad o el efecto de subida al presionar una tecla.  
+
+- `moverTuberias():` Desplaza las tuberías de derecha a izquierda y las reposiciona al extremo derecho cuando salen del área visible.
+  
+- `detectarColision():`Evalúa si el pájaro choca con una tubería o sale de los bordes, lo que termina el juego.  
+
+- `actualizarPuntaje():` Incrementa el puntaje al pasar entre las tuberías sin colisionar y lo muestra en pantalla.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+4. Interacciones Clave:  
+- Pájaro y tuberías: El jugador debe esquivar las tuberías controlando el vuelo. La colisión con ellas termina el juego.  
+
+- Pájaro y gravedad: Si el jugador no interviene, el pájaro desciende, aumentando el riesgo de colisión.  
+
+- Jugador y puntaje: El puntaje recompensa la habilidad del jugador para pasar entre las tuberías.  
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Características del Juego:
+
+- Interfaz Visual en ASCII: Utiliza caracteres simples para representar el pájaro, las tuberías y los bordes, optimizando la funcionalidad en consola.  
+
+- Dinámica en Tiempo Real: Los elementos se mueven constantemente, y el jugador debe reaccionar en tiempo real para evitar colisiones.  
+
+- Sistema de Retroalimentación: El puntaje visible en pantalla motiva al jugador y registra el progreso.  
+
+- Escalabilidad: El diseño modular permite implementar aumentos de dificultad, como incrementar la velocidad de las tuberías o reducir el tamaño del hueco.  
+
